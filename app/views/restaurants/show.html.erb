@@ -1,2 +1,26 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<div class="container">
+  <h1 class="r-name"><%= @restaurant.name %></h1>
+  <p>
+    <%= @restaurant.address %>
+  </p>
+  <p>
+    <%= @restaurant.phone_number %>
+  </p>
+  <p>
+    <%= @restaurant.category %>
+  </p>
+
+  <p><%= link_to "Give Review", new_restaurant_review_path(restaurant_id: @restaurant.id) %></p>
+  <p>
+    <strong>Reviews</strong>
+    <ul class='list-unstyled'>
+      <% @restaurant.reviews.each do |review| %>
+        <li>
+          <%= review.rating %>    <%= review.content %>
+        </li>
+      <% end %>
+    </ul>
+  </p>
+
+  <%= link_to 'Restaurants List', restaurants_path %>
+</div>

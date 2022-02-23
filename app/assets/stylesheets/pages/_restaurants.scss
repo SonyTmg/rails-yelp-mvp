@@ -1,0 +1,14 @@
+li a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    color: rgb(98, 98, 240);
+  }
+}
+.r-name {
+  color: blueviolet;
+}
+ p{
+   color: blue;
+ }
