@@ -10,7 +10,16 @@
     <%= @restaurant.category %>
   </p>
 
-  <p><%= link_to "Give Review", new_restaurant_review_path(restaurant_id: @restaurant.id) %></p>
+  <p>
+    <h3>Leave a review</h3>
+    <%= simple_form_for(@review,  url: restaurant_reviews_path(restaurant_id: @restaurant.id)) do |f| %>
+      <%= f.input :rating %>
+      <%= f.input :content %>
+      <%= f.hidden_field :restaurant_id, value: @review.restaurant_id %>
+      <%= f.submit %>
+    <% end %>
+  </p>
+  <br>
   <p>
     <strong>Reviews</strong>
     <ul class='list-unstyled'>

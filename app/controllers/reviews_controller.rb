@@ -7,8 +7,13 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.save
-    redirect_to restaurant_path(id: @review.restaurant.id)
+    if @review.valid?
+      @review.save
+      redirect_to restaurant_path(id: @review.restaurant_id)
+    else
+      @review = Review.new
+      render 'restaurants/show'
+    end
   end
 
   private
